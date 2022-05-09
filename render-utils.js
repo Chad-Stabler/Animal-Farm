@@ -1,4 +1,5 @@
 export function renderListItem(animal) {
+    const link = document.createElement('a');
     const div = document.createElement('div');
     div.classList.add('animal');
     div.style.top = animal.top;
@@ -6,6 +7,7 @@ export function renderListItem(animal) {
 
     const img = document.createElement('img');
     img.src = `./assets/${animal.type}.svg`;
+    link.href = `./animals/?id=${animal.id}`;
 
     const nameSpan = document.createElement('span');
     nameSpan.textContent = animal.name;
@@ -15,5 +17,7 @@ export function renderListItem(animal) {
     span.textContent = animal.says;
 
     div.append(img, nameSpan, span);
-    return div;
+    link.append(div);
+
+    return link;
 }
